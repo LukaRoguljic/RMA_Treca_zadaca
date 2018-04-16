@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ToDoTask</string>
+    <string name="tvTaskTitle">NEW TASK</string>
+    <string name="etTaskHint">Enter task title</string>
+    <string name="tvSelectPrio">SELECT PRIORITY:</string>
+    <string name="tvNewCategory">NEW CATEGORY</string>
+    <string name="etAddCategoryHint">Enter new category</string>
+    <string name="btnAddCategoryValue">ADD CATEGORY</string>
+
+    <string-array name="prioritySpinner">
+        <item>LOW</item>
+        <item>NORMAL</item>
+        <item>HIGH</item>
+    </string-array>
+
+    <string-array name="categorySpinner">
+        <item>FACULTY</item>
+        <item>JOB</item>
+        <item>HOME</item>
+    </string-array>
+
 </resources>

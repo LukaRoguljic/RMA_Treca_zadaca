@@ -11,8 +11,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.btnAddCat)   Button btnAddCategory;
-    @BindView(R.id.btnAddTask)  Button btnAddTask;
+    @BindView(R.id.btnNewCat)   Button btnNewCategory;
+    @BindView(R.id.btnNewTask)  Button btnNewTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btnAddCat)
+    @OnClick(R.id.btnNewCat)
     public void startAddCategory(){
         Intent startAddCatActivity = new Intent(this,AddCategory.class);
         startActivity(startAddCatActivity);
     }
 
-    @OnClick(R.id.btnAddTask)
+    @OnClick(R.id.btnNewTask)
     public void startAddTask(){
         Intent startAddTaskActivity = new Intent(this,AddTask.class);
         startActivity(startAddTaskActivity);
