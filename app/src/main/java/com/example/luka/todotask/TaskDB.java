@@ -17,8 +17,16 @@ import java.util.ArrayList;
 public class TaskDB extends SQLiteOpenHelper {
     private static TaskDB  mTaskDB = null;
 
-    private TaskDB (Context context){
+
+    public TaskDB (Context context){
         super(context.getApplicationContext(), Schema.DATABASE_NAME,null, Schema.SCHEMA_VERSION);
+    }
+
+    public static synchronized TaskDB getInstance(Context context){
+        if(mTaskDB == null){
+            mTaskDB = new TaskDB(context);
+        }
+        return mTaskDB;
     }
 
     @Override
@@ -63,9 +71,9 @@ public class TaskDB extends SQLiteOpenHelper {
         ContentValues inputValues = new ContentValues();
         inputValues.put(Schema.TITLE, task.getmTitle()); //put value of getmTitle in inputValues
         inputValues.put(Schema.PRIORITY,task.getmPriority());//put value of priority in inputValues
-        SQLiteDatabase dbase = this.getWritableDatabase();
-        dbase.insert(Schema.TABLE_TASKS, Schema.TITLE, inputValues);
-        dbase.close();
+        SQLiteDatabase writeableDatabase = this.getWritableDatabase();
+        writeableDatabase.insert(Schema.TABLE_TASKS, Schema.TITLE, inputValues);
+        writeableDatabase.close();
     }
 
     public void deleteTask(Task task){
@@ -75,6 +83,8 @@ public class TaskDB extends SQLiteOpenHelper {
         db.delete(Schema.TABLE_TASKS, Schema.ID + "=?", arg);
         db.close();
     }
+
+
 
 
     public static class Schema{
