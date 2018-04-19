@@ -5,40 +5,19 @@
     android:layout_height="match_parent"
     >
 
-    <View
-        android:id="@+id/strut"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="203dp" />
-    <Button
-        android:id="@+id/btnNewCat"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@id/strut"
-        android:text="NEW CATEGORY"/>
 
     <Button
         android:id="@+id/btnNewTask"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/strut"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@id/strut"
-        android:layout_alignParentEnd="true"
-        android:text="NEW TASK"
-         />
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="NEW TASK"/>
 
-    <ListView
-        android:id="@+id/lvTaskList"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvTaskView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnNewCat">
-    </ListView>
-
+        android:layout_below="@id/btnNewTask"/>
 
 </RelativeLayout>

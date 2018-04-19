@@ -34,21 +34,6 @@
         android:layout_below="@id/tvPrioHint"
         android:entries="@array/prioritySpinner"/>
 
-    <TextView
-        android:id="@+id/tvCategoryHint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/prioritySpinner"
-        android:layout_centerHorizontal="true"
-        android:text="SELECT CATEGORY:"/>
-
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvCategoryHint"
-        android:entries="@array/categorySpinner"/>
-
     <Button
         android:id="@+id/btnAddTask"
         android:layout_width="match_parent"
