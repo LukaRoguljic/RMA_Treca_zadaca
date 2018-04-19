@@ -21,24 +21,26 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mTaskList;
     Button  mNewTaskBtn;
 
+    Bundle first, second;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);;
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        first = getIntent().getExtras();
+        second = getIntent().getExtras();
+
+        //setUpUI();
     }
 
+    private void setUpUI(){
 
 
+        title = first.toString();
+        priority = second.toString();
 
-
-
-
-
-
-   /* private void setUpUI(){
         mTaskList = rvTaskView;
         ArrayList<Task> tasks = this.loadTasks();
         TaskAdapter taskAdapter = new TaskAdapter(tasks);
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mNewTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task task = new Task(0,"title","LOW");
+                Task task = new Task(title,priority);
                 TaskDB.getInstance(getApplicationContext()).addTasks(task);
                 TaskAdapter adapter = (TaskAdapter) rvTaskView.getAdapter();
                 adapter.insert(task);
@@ -58,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Task> loadTasks() {
         return TaskDB.getInstance(this).getAllTasks();
     }
-*/
 
     @OnClick(R.id.btnNewTask)
     public void startAddTask(){
+
         Intent startAddTaskActivity = new Intent(this,AddTask.class);
         startActivity(startAddTaskActivity);
     }

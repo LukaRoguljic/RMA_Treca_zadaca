@@ -40,14 +40,13 @@ public class TaskDB extends SQLiteOpenHelper {
 
     //SQL statements
     String CREATE_TABLE_TASKS = "CREATE TABLE " + Schema.TABLE_TASKS
-            + "(" + Schema.ID + " INTEGER PRIMARY KEY, "
-            + Schema.TITLE + " TEXT," + Schema.PRIORITY + " TEXT," + ")";
+            + "(" + Schema.TITLE + " TEXT PRIMARY KEY," + Schema.PRIORITY + " TEXT," + ")";
 
 
 
     static final String DROP_TABLE_TASKS = "DROP TABLE IF EXISTS " + Schema.TABLE_TASKS;
 
-    static final String SELECT_ALL_TASKS = "SELECT "+ Schema.ID + "," + Schema.TITLE + "," + Schema.PRIORITY + " FROM " + Schema.TABLE_TASKS;
+    static final String SELECT_ALL_TASKS = "SELECT " + Schema.TITLE + "," + Schema.PRIORITY + " FROM " + Schema.TABLE_TASKS;
 
 
     public ArrayList<Task> getAllTasks(){
@@ -56,10 +55,9 @@ public class TaskDB extends SQLiteOpenHelper {
         ArrayList<Task> tasks = new ArrayList<>();
         if(taskCursor.moveToFirst()){
             do{
-                int ID = taskCursor.getInt(0);
-                String title = taskCursor.getString(1);
-                String priority = taskCursor.getString(2);
-                tasks.add(new Task(ID,title, priority));
+                String title = taskCursor.getString(0);
+                String priority = taskCursor.getString(1);
+                tasks.add(new Task(title, priority));
             }while(taskCursor.moveToNext());
         }
         taskCursor.close();
@@ -77,24 +75,21 @@ public class TaskDB extends SQLiteOpenHelper {
     }
 
     public void deleteTask(Task task){
-        int id = task.getmID();
-        String[] arg = new String[]{String.valueOf(id)};
+        String title = task.getmTitle();
+        String[] arg = new String[]{String.valueOf(title)};
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(Schema.TABLE_TASKS, Schema.ID + "=?", arg);
+        db.delete(Schema.TABLE_TASKS, Schema.TITLE + "=?", arg);
         db.close();
     }
-
 
 
 
     public static class Schema{
         private static final int SCHEMA_VERSION = 1;
         private static final String DATABASE_NAME = "tasks.db";
-        //A table to store owned books:
         static final String TABLE_TASKS = "tasks";
         static final String TITLE = "title";
         static final String PRIORITY ="priority";
-        static final String ID = "id";
     }
     }
 

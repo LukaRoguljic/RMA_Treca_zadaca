@@ -9,14 +9,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AddTask extends AppCompatActivity {
 
     Intent intent = new Intent();
-    public static final String TITLE = "title";
-    public static final String PRIORITY = "priority";
+
 
     @BindView(R.id.etTaskInput) EditText etTaskInput;
     @BindView(R.id.prioritySpinner) Spinner prioritySpinner;
@@ -50,8 +51,8 @@ public class AddTask extends AppCompatActivity {
                     return;
                 }
                 else{
-                    intent.putExtra(TITLE,title);
-                    intent.putExtra(PRIORITY,priority);
+                    intent.putExtra("title",title);
+                    intent.putExtra("priority",priority);
                     intent.setClass(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                 }

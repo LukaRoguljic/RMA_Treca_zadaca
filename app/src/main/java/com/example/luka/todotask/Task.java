@@ -5,12 +5,12 @@ package com.example.luka.todotask;
 public class Task {
 
     public String mTitle, mPriority;
-    public int mID;
 
-    public Task(int mID, String mTitle, String mPriority) {
+
+    public Task(String mTitle, String mPriority) {
         this.mTitle = mTitle;
         this.mPriority = mPriority;
-        this.mID = mID;
+
     }
 
     public String getmTitle() {
@@ -27,13 +27,5 @@ public class Task {
 
     public void setmPriority(String mPriority) {
         this.mPriority = mPriority;
-    }
-
-    public int getmID() {
-        return mID;
-    }
-
-    public void setmID(int mID) {
-        this.mID = mID;
     }
 }
