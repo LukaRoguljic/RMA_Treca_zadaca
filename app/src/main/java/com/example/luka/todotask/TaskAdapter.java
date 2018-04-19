@@ -41,6 +41,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.tvPriorityColor.setText(task.getmPriority());
     }
 
+    public void insert(Task task) {
+        this.mTasks.add(task);
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount(){
         return this.mTasks.size();

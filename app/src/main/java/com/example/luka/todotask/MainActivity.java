@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import java.util.ArrayList;
@@ -26,16 +27,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);;
         ButterKnife.bind(this);
+
     }
 
-    private void setUpUI(){
 
+
+
+
+
+
+
+
+   /* private void setUpUI(){
+        mTaskList = rvTaskView;
+        ArrayList<Task> tasks = this.loadTasks();
+        TaskAdapter taskAdapter = new TaskAdapter(tasks);
+        mTaskList.setAdapter(taskAdapter);
+        mNewTaskBtn = btnNewTask;
+        mNewTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Task task = new Task(0,"title","LOW");
+                TaskDB.getInstance(getApplicationContext()).addTasks(task);
+                TaskAdapter adapter = (TaskAdapter) rvTaskView.getAdapter();
+                adapter.insert(task);
+            }
+        });
     }
 
     private ArrayList<Task> loadTasks() {
         return TaskDB.getInstance(this).getAllTasks();
     }
-
+*/
 
     @OnClick(R.id.btnNewTask)
     public void startAddTask(){
